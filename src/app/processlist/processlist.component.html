@@ -1,0 +1,60 @@
+<mat-chip-list>
+    <span class="adf-chip-label">{{ 'ADF_PROCESS_LIST.DETAILS.LABELS.TASKS_ACTIVE'|translate }}</span>
+    <mat-chip class="adf-process-badge" color="accent" selected="true">{{activeTasks?.length}}</mat-chip>
+</mat-chip-list>
+ <mat-toolbar>
+        <mat-toolbar-row>
+                <a href="javascript:history.back()" class="previous round">&#8249;</a>
+            <span>ProcessDetails</span>
+            <span class="example-spacer"></span>
+            <mat-icon class="example-icon" aria-hidden="false" aria-label="Example heart icon">favorite</mat-icon>
+            <mat-icon class="example-icon" aria-hidden="false" aria-label="Example delete icon">delete</mat-icon>
+          </mat-toolbar-row>
+        </mat-toolbar>
+<div *ngIf="!processInstanceDetails">
+    {{ 'ADF_PROCESS_LIST.DETAILS.MESSAGES.NONE'|translate }}
+</div>
+
+<mat-card *ngIf="processInstanceDetails">
+
+
+<div class="container"
+fxLayout
+fxLayout.xs="column"
+fxLayoutAlign="center"
+fxLayoutGap="10px"
+fxLayoutGap.xs="0">
+<div class="item item-1" fxFlex="50%">
+<mat-card>
+<mat-card-content>
+<adf-process-instance-tasks 
+#processInstanceTasks
+[processInstanceDetails]="processInstanceDetails"
+(taskClick)="onTaskClick($event)">
+S
+</adf-process-instance-tasks>
+</mat-card-content>
+</mat-card>
+</div>
+<div class="item item-2" fxFlex="35%" fxFlexOrder="3"> 
+<mat-card>
+<mat-card-content>
+<adf-process-instance-header
+#processInstanceHeader
+[processInstance]="processInstanceDetails">
+</adf-process-instance-header>
+</mat-card-content>
+</mat-card> 
+<mat-card>
+<mat-card-content>
+<adf-process-instance-comments #activitiComments
+[readOnly]="false"
+[processInstanceId]="processInstanceDetails.id">
+</adf-process-instance-comments>
+</mat-card-content>
+</mat-card>
+</div>
+<div class="item item-3" fxFlex></div>
+</div>
+</mat-card> 
+

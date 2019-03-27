@@ -1,0 +1,55 @@
+
+
+<adf-tasklist #taskList
+[appId]="appId"
+state="open"
+assignment="assignee"
+(rowClick)="onRowClick($event)">
+<data-columns>
+        <data-column key="name" title="ADF_TASK_LIST.PROPERTIES.NAME">
+                <ng-template let-entry="$implicit">
+                    {{entry.row.obj.name}}
+                  
+                </ng-template>
+        </data-column>
+        <data-column key="created" title="ADF_TASK_LIST.PROPERTIES.CREATED">
+                <ng-template let-entry="$implicit">
+                  {{entry.row.obj.created }}
+                </ng-template>
+        </data-column>
+        <data-column key="assignee" type="text" [sortable]="false" 
+        title="ADF_TASK_LIST.PROPERTIES.ASSIGNEE" 
+        class="desktop-only adf-data-table-cell--ellipsis">
+            <ng-template let-entry="$implicit">
+                <div title="{{entry.row.obj.assignee}}">
+                    {{entry.row.obj.assignee.firstName}} 
+                    {{entry.row.obj.assignee.lastName}}</div>
+            </ng-template>
+        </data-column>
+        <data-column key="dueDate" title="DUEDATE">
+                <ng-template let-entry="$implicit">
+                    {{entry.row.obj.dueDate}}
+                  
+                </ng-template>
+                </data-column>
+                <data-column key="endDate" title="ENDDATE">
+                        <ng-template let-entry="$implicit">
+                            {{entry.row.obj.endDate}}
+                          
+                        </ng-template>
+                        </data-column>
+</data-columns>
+
+<adf-empty-content *ngIf="!customEmptyContent"
+icon="assignment"
+[title]="'ADF_TASK_LIST.LIST.MESSAGES.TITLE' | translate"
+[subtitle]="'ADF_TASK_LIST.LIST.MESSAGES.SUBTITLE' | translate">
+</adf-empty-content>
+</adf-tasklist>
+
+<adf-pagination [target]="taskList">
+    </adf-pagination>
+
+
+ 
+<button mat-raised-button color="warn" (click)="onBack()" >Back</button>

@@ -1,0 +1,19 @@
+<mat-toolbar>
+    <mat-toolbar-row>
+            <a href="javascript:history.back()" class="previous round">&#8249;</a>
+            
+        <span>TaskDetails</span>
+        <span class="example-spacer"></span>
+        <mat-icon class="example-icon" aria-hidden="false" aria-label="Example heart icon">favorite</mat-icon>
+        <mat-icon class="example-icon" aria-hidden="false" aria-label="Example delete icon">delete</mat-icon>
+      </mat-toolbar-row>
+    </mat-toolbar>
+
+<h3>Task details</h3>
+
+<adf-task-details
+  [taskId]="taskId"
+  (formContentClicked)="onContentClick($event)">
+
+</adf-task-details>
+
