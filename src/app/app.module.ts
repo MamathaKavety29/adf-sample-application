@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 
-
 // ADF modules
 import { ContentModule } from '@alfresco/adf-content-services';
 import { ProcessModule } from '@alfresco/adf-process-services';
