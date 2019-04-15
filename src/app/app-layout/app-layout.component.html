@@ -8,55 +8,34 @@
     </button>
     <span fxFlex="1 1 auto" fxShow fxHide.lt-sm="true">ADF</span>
     <div class="adf-app-layout-menu-spacer"></div>
-    <adf-userinfo
-    namePosition="left">
-    </adf-userinfo>
-    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-      <mat-icon>more_vert</mat-icon>
-    </button>
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item (click)="onClickSignout()">
-        <span>SignOut</span>
-      </button>
-    </mat-menu>
     </mat-toolbar>
     </ng-template>
-    
     </adf-sidenav-layout-header>
     
     <adf-sidenav-layout-navigation>
     <ng-template let-isMenuMinimized="isMenuMinimized">
     <mat-nav-list class="adf-sidenav-linklist">
     
-    <a mat-list-item class="adf-sidenav-link" matTooltip="login"
-    [matTooltipPosition]="position.value" matTooltipClass="example-tooltip-red" routerLink="/login" routerLinkActive="active">
+    <a mat-list-item class="adf-sidenav-link" routerLink="/login">
     <mat-icon matListIcon class="sidenav-menu-icon">vpn_key</mat-icon>
     <div class="sidenav-menu-label" *ngIf="!isMenuMinimized()">Login</div>
     </a>
-    
-    <a mat-list-item class="adf-sidenav-link" matTooltip="apps"
-    [matTooltipPosition]="position.value" matTooltipClass="example-tooltip-red" routerLink="/apps" routerLinkActive="active">
+    <a mat-list-item class="adf-sidenav-link" routerLink="/apps">
     <mat-icon matListIcon class="sidenav-menu-icon">device_hub</mat-icon>
     <div class="sidenav-menu-label" *ngIf="!isMenuMinimized()">Apps</div>
     </a>
+    <a mat-list-item adf-logout class="adf-sidenav-link">
+    <mat-icon matListIcon class="sidenav-menu-icon">exit_to_app</mat-icon>
+    <div class="sidenav-menu-label" *ngIf="!isMenuMinimized()">Logout</div>
+    </a>
     
-    
-    <a mat-list-item class="adf-sidenav-link" matTooltip="task"
-    [matTooltipPosition]="position.value" matTooltipClass="example-tooltip-red" routerLink="/tasks" routerLinkActive="active">
+    <a mat-list-item class="adf-sidenav-link" routerLink="/task">
     <i class="material-icons"> build</i>
     <div class="sidenav-menu-label" *ngIf="!isMenuMinimized()">Task</div>
     </a>
-    
-    <a mat-list-item class="adf-sidenav-link" matTooltip="process"
-    [matTooltipPosition]="position.value" matTooltipClass="example-tooltip-red" routerLink="/process" routerLinkActive="active">
+    <a mat-list-item class="adf-sidenav-link" routerLink="/process">
     <i class="material-icons"> credit_card</i>
     <div class="sidenav-menu-label" *ngIf="!isMenuMinimized()">Process</div>
-    </a>
-
-    <a mat-list-item adf-logout class="adf-sidenav-link" matTooltip="logout"
-    [matTooltipPosition]="position.value" matTooltipClass="example-tooltip-red" routerLinkActive="active">
-    <mat-icon matListIcon class="sidenav-menu-icon">exit_to_app</mat-icon>
-    <div class="sidenav-menu-label" *ngIf="!isMenuMinimized()">Logout</div>
     </a>
     
     

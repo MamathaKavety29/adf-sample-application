@@ -3,7 +3,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import {MatDialogModule} from '@angular/material/dialog';
+
 
 // ADF modules
 import { ContentModule } from '@alfresco/adf-content-services';
@@ -31,7 +31,6 @@ import { ProcessComponent } from './process/process.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { ProcesslistComponent } from './processlist/processlist.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
-import { HeaderComponent } from './header/header.component';
 
 @NgModule({
     imports: [
@@ -66,8 +65,7 @@ import { HeaderComponent } from './header/header.component';
         ProcessComponent,
         SidenavComponent,
         ProcesslistComponent,
-        ToolbarComponent,
-        HeaderComponent
+        ToolbarComponent
     ],
     providers: [
         PreviewService,

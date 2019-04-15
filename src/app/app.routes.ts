@@ -1,5 +1,5 @@
 
-import { ModuleWithProviders, Component } from '@angular/core';
+import { ModuleWithProviders } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuardBpm, AuthGuardEcm } from '@alfresco/adf-core';
 import { HomeComponent } from './home/home.component';
@@ -18,21 +18,18 @@ import { ProcesslistComponent } from './processlist/processlist.component';
 export const appRoutes: Routes = [
   { path: 'files/:nodeId/view', component: FileViewComponent, canActivate: [AuthGuardEcm], outlet: 'overlay' },
   { path: 'preview/blob', component: BlobViewComponent, outlet: 'overlay', pathMatch: 'full' },
-  { path:'',component:LoginComponent},
-  { path:'apps',component:AppsComponent},
   {
     path: '',
     component: AppLayoutComponent,
-              children: [
+    children: [
               {
                   path: '',
                   component: HomeComponent
-                  
               },
               {
                 path: 'home',
                 component: HomeComponent
-              },
+            },
               {
                 path: 'apps',
                 component: AppsComponent,
@@ -49,21 +46,15 @@ export const appRoutes: Routes = [
                 canActivate: [ AuthGuardBpm ]
               },
               {
-                path: 'tasks',
+                path: 'task',
                 component: TasksComponent,
                 canActivate: [ AuthGuardBpm ] 
               },
-              // {
-              //   path: 'app/:appId/task/:taskId',
-              //   component: TaskDetailsComponent,
-              //    canActivate: [ AuthGuardBpm ]
-              // },
               {
                 path:'process',
                 component:ProcessComponent,
                 canActivate: [ AuthGuardBpm ]
-              },
-              
+              }
 
           ]
   },
@@ -73,15 +64,11 @@ export const appRoutes: Routes = [
   },
  
   {
-    path: 'app/:appId/task/:taskId',
+    path: 'apps/:appId/task/:taskId',
     component: TaskDetailsComponent,
      canActivate: [ AuthGuardBpm ]
   },
-  {
-    path: 'tasks/:taskId/taskDetails',
-    component: TaskDetailsComponent,
-     canActivate: [ AuthGuardBpm ]
-  },
+  
   {
     path:'process/:processInstanceId/processDetails',
     component:ProcesslistComponent

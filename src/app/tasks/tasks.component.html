@@ -1,4 +1,5 @@
 
+
 <adf-tasklist #taskList
 [appId]="appId"
 state="open"
@@ -8,7 +9,8 @@ assignment="assignee"
         <data-column key="name" title="ADF_TASK_LIST.PROPERTIES.NAME">
                 <ng-template let-entry="$implicit">
                     {{entry.row.obj.name}}
-                  </ng-template>
+                  
+                </ng-template>
         </data-column>
         <data-column key="created" title="ADF_TASK_LIST.PROPERTIES.CREATED">
                 <ng-template let-entry="$implicit">
@@ -50,3 +52,4 @@ icon="assignment"
 
 
  
+<button mat-raised-button color="warn" (click)="onBack()" >Back</button>

@@ -1,15 +1,7 @@
-mat-toolbar-row{
-  background-color:orange;
-  font-family: 'Times New Roman';
-  font-size: 20px;
-  padding: 40px;
-}
-
-a{
+a {
     text-decoration: none;
     display: inline-block;
     padding: 8px 16px;
-    color: black;
   }
   a.previous.round {
     background-color: orange;
@@ -24,8 +16,6 @@ a{
     flex: 1 1 auto;
   }
 
-  .deleteicon{
-    color:navy;
+  mat-toolbar{
+    background-color: orange;
   }
- 
-  

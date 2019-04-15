@@ -1,66 +1,19 @@
-<app-toolbar></app-toolbar>
+<mat-toolbar>
+    <mat-toolbar-row>
+            <a href="javascript:history.back()" class="previous round">&#8249;</a>
+            
+        <span>TaskDetails</span>
+        <span class="example-spacer"></span>
+        <mat-icon class="example-icon" aria-hidden="false" aria-label="Example heart icon">favorite</mat-icon>
+        <mat-icon class="example-icon" aria-hidden="false" aria-label="Example delete icon">delete</mat-icon>
+      </mat-toolbar-row>
+    </mat-toolbar>
 
 <h3>Task details</h3>
 
-<!-- <adf-task-details
+<adf-task-details
   [taskId]="taskId"
   (formContentClicked)="onContentClick($event)">
-</adf-task-details> -->
 
-
-
-<div class="container"
-fxLayout="row"
-fxLayoutAlign="space-around center"
-fxLayoutGap="10px">
-
-<div class="item item-1" fxFlex="50%" fxFlexOrder="1">
-    <adf-info-drawer>
-    <adf-info-drawer-tab [label]="'Activities'" icon="local_activity">
-    <!-- <mat-card> -->
-      <!-- <mat-card-content> -->
-          <adf-task-header
-            [taskDetails]="taskDetails">
-          </adf-task-header>
-  <!-- </mat-card-content> -->
-  <!-- </mat-card> -->
-  </adf-info-drawer-tab>
-  <adf-info-drawer-tab [label]="'PeopleInvolved'" icon="people">
-  <!-- <mat-card> -->
-      <adf-people  
-    [taskId]="taskId"
-    [readOnly]="false">
-</adf-people>
-  <!-- </mat-card> -->
-  </adf-info-drawer-tab>
-  </adf-info-drawer>
-  <adf-comments
-    [taskId]="taskId"
-    [readOnly]=flase>
-</adf-comments>
-</div>
-
-  <div class="item item-1" fxFlex="50%" fxFlexOrder="2">
-    <div class="assignment-container" *ngIf="hidePeopleSearch">
-      <mat-card>  
-     <adf-people-search
-      (searchPeople)="searchUser($event)"
-      (success)="assignTaskToUser($event)"
-        (closeSearch)="onCloseSearch()"
-        [results]="peopleSearch$">
-        <ng-container people-search-title>{{ 'ADF_TASK_LIST.DETAILS.LABELS.ADD_ASSIGNEE' | translate }}
-        </ng-container>
-        <ng-container people-search-action-label>{{ 'ADF_TASK_LIST.PEOPLE.ADD_ASSIGNEE' | translate }}
-        </ng-container>
-      </adf-people-search>
-      </mat-card>
-      </div>
-   </div>
-  
-   </div>
-   
-      
-  
-
-
+</adf-task-details>
 

@@ -23,7 +23,7 @@ export class AppsComponent {
 
   onAppClicked(app: AppDefinitionRepresentationModel) 
   {
-    console.log(app.id);
+    console.log(app);
     this.router.navigate(['/apps', app.id || 0, 'tasks']);
   }
 
