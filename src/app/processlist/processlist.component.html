@@ -1,0 +1,198 @@
+ <!-- <mat-chip-list>
+    <span class="adf-chip-label">{{ 'ADF_PROCESS_LIST.DETAILS.LABELS.TASKS_ACTIVE'|translate }}</span>
+    <mat-chip class="adf-process-badge" color="accent" selected="true">{{activeTasks?.length}}</mat-chip>
+</mat-chip-list>
+ div *ngIf="!processInstanceDetails">
+    {{ 'ADF_PROCESS_LIST.DETAILS.MESSAGES.NONE'|translate }}
+</div>
+
+<mat-card *ngIf="processInstanceDetails">
+
+
+<div class="container"
+fxLayout
+fxLayout.xs="column"
+fxLayoutAlign="center"
+fxLayoutGap="10px"
+fxLayoutGap.xs="0">
+<div class="item item-1" fxFlex="50%">
+<mat-card>
+<mat-card-content>
+<adf-process-instance-tasks 
+#processInstanceTasks
+[processInstanceDetails]="processInstanceDetails"
+(taskClick)="onTaskClick($event)">
+</adf-process-instance-tasks>
+</mat-card-content>
+</mat-card>
+</div>
+<div class="item item-2" fxFlex="35%" fxFlexOrder="3"> 
+<mat-card>
+<mat-card-content>
+<adf-process-instance-header
+#processInstanceHeader
+[processInstance]="processInstanceDetails">
+</adf-process-instance-header>
+</mat-card-content>
+</mat-card> 
+<mat-card>
+<mat-card-content>
+<adf-process-instance-comments #activitiComments
+[readOnly]="false"
+[processInstanceId]="processInstanceDetails.id">
+</adf-process-instance-comments>
+</mat-card-content>
+</mat-card>
+</div>
+<div class="item item-3" fxFlex></div>
+</div>
+</mat-card> -->
+<mat-toolbar>
+    <mat-toolbar-row>
+            <a href="javascript:history.back()" class="previous round">&#8249;</a>
+            
+        <span>ProcessDetails</span>
+        <span class="example-spacer"></span>
+        <mat-icon class="example-icon" aria-hidden="false" aria-label="Example heart icon">favorite</mat-icon>
+        <mat-icon class="example-icon" aria-hidden="false" aria-label="Example delete icon">delete</mat-icon>
+      </mat-toolbar-row>
+    </mat-toolbar>
+<mat-card>
+    <div *ngIf="!processInstanceDetails">
+    {{ 'ADF_PROCESS_LIST.DETAILS.MESSAGES.NONE'|translate }}
+    </div>
+    </mat-card>
+     <mat-card *ngIf="processInstanceDetails">
+     <div class="container"
+    fxLayout
+    fxLayout.xs="column"
+    fxLayoutAlign="center"
+    fxLayoutGap="10px"
+    fxLayoutGap.xs="0">
+    <div class="item item-1" fxFlex="40%">
+    <mat-card>
+    <mat-chip-list>
+    <span class="adf-chip-label">{{ 'ADF_PROCESS_LIST.DETAILS.LABELS.TASKS_ACTIVE'|translate }}</span>
+    <mat-chip class="adf-process-badge" color="accent" selected="true">{{activeTasks?.length}}</mat-chip>
+    </mat-chip-list>
+    <div *ngIf="activeTasks.length===0;else datatable">
+     
+      No activeTasks Details are available
+      
+    </div>
+    <ng-template #datatable>
+    <adf-datatable 
+    [rows]="activeTasks"
+    (rowClick)="onTaskClick($event)">
+    <data-columns>
+    <data-column key="name" type="text" [sortable]="false" title="Name"></data-column>
+
+    <data-column key="assignee" type="text" [sortable]="false" title="Assigned to">
+    <ng-template let-entry="$implicit">
+    <div title="{{entry.row.obj.assignee.Name }}">
+        {{entry.row.obj.assignee.firstName}}  {{entry.row.obj.assignee.lastName}}</div>
+    </ng-template>
+    </data-column>
+    <data-column key="assignee" type="text" [sortable]="false" title="Created on">
+    <ng-template let-entry="$implicit">
+    <div title="{{entry.row.obj.created }}">{{entry.row.obj.created | date}}</div>
+    </ng-template>
+    </data-column>
+    </data-columns>
+    </adf-datatable>
+    </ng-template>
+  
+     </mat-card></div>
+    <div class="container"
+    fxLayout
+    fxLayout.xs="column"
+    direction COLUMN
+    fxLayoutAlign="center"
+    fxLayoutGap="10px"
+    fxLayoutGap.xs="0">
+    <div class="item item-1" fxFlex="50%">
+    <mat-card>
+    <mat-chip-list>
+    <span class="adf-chip-label">{{ 'ADF_PROCESS_LIST.DETAILS.LABELS.TASKS_COMPLETED'|translate }}</span>
+    <mat-chip class="adf-process-badge" color="accent" selected="true">{{completedTasks?.length}}</mat-chip>
+    </mat-chip-list>
+    <!-- <adf-datatable 
+    [rows]="completedTasks">
+    <data-columns>
+    <data-column key="name" type="text" [sortable]="false" title="Name"></data-column>
+
+    <data-column key="assignee" type="text" [sortable]="false" title="Assigned to">
+    <ng-template let-entry="$implicit">
+    <div title="{{entry.row.obj.assignee.Name }}">
+        {{entry.row.obj.assignee.firstName}}  {{entry.row.obj.assignee.lastName}}
+    </div>
+    </ng-template>
+    </data-column>
+    <data-column key="assignee" type="text" [sortable]="false" title="Created on">
+    <ng-template let-entry="$implicit">
+    <div title="{{entry.row.obj.created }}">{{entry.row.obj.created | date}}</div>
+    </ng-template>
+    </data-column>
+    </data-columns>
+    </adf-datatable> -->
+   <div *ngIf="completedTasks.length===0;else table">
+     
+     No completedTasks Details are available
+     
+   </div>
+   <ng-template  #table>
+    <table mat-table [dataSource]="completedTasks" class="mat-elevation-z8">
+
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> TaskId </th>
+        <td mat-cell *matCellDef="let element">{{element.id }} </td>
+      </ng-container>
+    
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="assignee">
+          <th mat-header-cell *matHeaderCellDef> AssignedTo </th>
+          <td mat-cell *matCellDef="let element"> {{element.assignee.firstName}}
+              {{completedTasks[0].assignee.lastName}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="created">
+          <th mat-header-cell *matHeaderCellDef> CreatedOn </th>
+          <td mat-cell *matCellDef="let element"> {{element.created | date}} </td>
+        </ng-container>
+                   
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row (click)="onMatTableRow($event)" *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+      </ng-template>
+      
+      
+    
+    <!-- <adf-process-instance-tasks
+    #processInstanceTasks
+    [processInstanceDetails]="processInstanceDetails"
+    (taskClick)="onTaskClick($event)">
+    </adf-process-instance-tasks>  -->
+    
+    </mat-card>
+    </div>
+    <div class="item item-2" fxFlex="60%" fxFlexOrder="3">
+    <adf-info-drawer>
+    <adf-info-drawer-tab [label]="'Activities'" icon="local_activity">
+    <adf-process-instance-header
+    #processInstanceHeader
+    [processInstance]=
+    "processInstanceDetails">
+    </adf-process-instance-header> 
+    </adf-info-drawer-tab>
+    <adf-info-drawer-tab [label]="'Comments'" icon="comment">
+    <adf-process-instance-comments #activitiComments
+    [readOnly]="false"
+    [processInstanceId]="processInstanceDetails.id">
+    </adf-process-instance-comments>
+    </adf-info-drawer-tab>
+  </adf-info-drawer>
+    </div>

@@ -1,0 +1,11 @@
+
+   <div>Process List</div>
+   <adf-process-instance-list #processList
+   [appId]="appId" 
+   [state]="'all'"
+   (rowClick)="onRowClick($event)">
+   
+   </adf-process-instance-list>
+
+   <adf-pagination [target]="processList">
+      </adf-pagination>

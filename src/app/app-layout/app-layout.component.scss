@@ -1,0 +1,9 @@
+adf-sidenav-layout {
+    height: 100%;
+}
+:host /deep/ .mat-toolbar{
+    display: inherit;
+}
+button{
+    color: black;
+}

@@ -1,0 +1,47 @@
+.adf-card-container[_ngcontent-c13] {
+    font-family: inherit;
+    text-align: left;
+    width: min-content;
+    float: right;
+    position: relative;
+}
+
+.align{
+    text-align: left;
+    width: min-content;
+    float: right;
+    position: relative;
+}
+button.mat-raised-button {
+    background-color: orange;
+    border: none;
+    color: white;
+    padding: 7px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+
+  mat-toolbar{
+    background-color: orange;
+  }
+  a {
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px 16px;
+  }
+  a.previous.round {
+    background-color: orange;
+    border-radius: 150%;
+  }
+
+  .example-icon {
+    padding: 0 14px;
+  }
+  
+  .example-spacer {
+    flex: 1 1 auto;
+  }
